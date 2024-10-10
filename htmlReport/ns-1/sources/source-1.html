@@ -1,0 +1,181 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Creaking</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example</a>
+</div>
+
+<h1>Coverage Summary for Class: Creaking (org.example)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Creaking</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (4/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (17/17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example;
+&nbsp;
+&nbsp;import lombok.Getter;
+&nbsp;import lombok.Setter;
+&nbsp;import lombok.ToString;
+&nbsp;
+&nbsp;@Getter
+&nbsp;@Setter
+&nbsp;@ToString
+&nbsp;
+&nbsp;public class Creaking {
+&nbsp;    private final CreakingHeart creakingHeart;
+&nbsp;    private float x, y, z;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Creates a {@link Creaking} in a 20x20 area around the (X, Z)
+&nbsp;     * coordinates of the {@link CreakingHeart} and in its same Y coordinate
+&nbsp;     * @param creakingHeart : The {@link CreakingHeart} linked to this {@link Creaking}
+&nbsp;     */
+<b class="fc">&nbsp;    protected Creaking(CreakingHeart creakingHeart){</b>
+<b class="fc">&nbsp;        this.creakingHeart = creakingHeart;</b>
+<b class="fc">&nbsp;        this.x = (int) (Math.random() * 40) + creakingHeart.getX()-20;</b>
+<b class="fc">&nbsp;        this.y = creakingHeart.getY();</b>
+<b class="fc">&nbsp;        this.z = (int) (Math.random() * 40) + creakingHeart.getZ()-20;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Moves the {@link Creaking} to the indicated coordinates if
+&nbsp;     * they are not outside a 50x25x50 area around the Creaking Heart
+&nbsp;     * @param x : The new X coordinate for the Creaking
+&nbsp;     * @param y : The new Y coordinate for the Creaking
+&nbsp;     * @param z : The new Z coordinate for the Creaking
+&nbsp;     * @return True if the new coordinates are valid, else false
+&nbsp;     */
+&nbsp;    public boolean move(int x, int y, int z){
+<b class="fc">&nbsp;        int xDistance = Math.abs(x - this.creakingHeart.getX());</b>
+<b class="fc">&nbsp;        int yDistance = Math.abs(y - this.creakingHeart.getY());</b>
+<b class="fc">&nbsp;        int zDistance = Math.abs(z - this.creakingHeart.getZ());</b>
+&nbsp;
+<b class="pc">&nbsp;        if (xDistance &lt;= 50 &amp;&amp; zDistance &lt;= 50 &amp;&amp; yDistance &lt;= 25){</b>
+<b class="fc">&nbsp;            this.x = x;</b>
+<b class="fc">&nbsp;            this.y = y;</b>
+<b class="fc">&nbsp;            this.z = z;</b>
+<b class="fc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Indicates the coordinates of the {@link CreakingHeart} bounded to this {@link Creaking}
+&nbsp;     * @return The coordinates of the {@link CreakingHeart} of to this {@link Creaking}
+&nbsp;     */
+&nbsp;    public String getHit(){
+<b class="fc">&nbsp;        return &quot;The Creaking Heart bounded to this Creaking is in (&quot; + creakingHeart.getX()</b>
+<b class="fc">&nbsp;                + &quot;, &quot; + creakingHeart.getY() + &quot;, &quot; + creakingHeart.getZ() + &quot;)&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Returns the memory number of the {@link Creaking}
+&nbsp;     * @return The memory number of the {@link Creaking}
+&nbsp;     */
+&nbsp;    public String getMemoryDirection(){
+<b class="fc">&nbsp;        return  Integer.toHexString(System.identityHashCode(this));</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-10-10 09:37</div>
+</div>
+</body>
+</html>

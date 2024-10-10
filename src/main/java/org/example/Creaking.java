@@ -56,8 +56,8 @@ public class Creaking {
     }
 
     /**
-     * Returns the memory number of the {@link Creaking}
-     * @return The memory number of the {@link Creaking}
+     * Returns the memory direction of the {@link Creaking}
+     * @return The memory direction of the {@link Creaking}
      */
     public String getMemoryDirection(){
         return  Integer.toHexString(System.identityHashCode(this));
